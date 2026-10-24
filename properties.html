@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#15241e">
+<title>Properties | AUREL ESTATES</title>
+<meta name="description" content="Explore a considered collection of homes, apartments and villas in Kenya with Aurel Estates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--green:#15241e;--green2:#243a2f;--cream:#f6f4ee;--paper:#fffefa;--muted:#777a70;--line:#e4e2da;--gold:#c7ad80}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--green);font-family:"DM Sans",sans-serif}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.site-header{height:78px;background:var(--green);color:white;padding:0 7%;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:5}
+.logo{font:25px "Playfair Display",serif;letter-spacing:4px;line-height:1}
+.logo small{display:block;font:8px "DM Sans",sans-serif;letter-spacing:5px;text-align:center;margin-top:5px}
+.nav{display:flex;align-items:center;gap:30px;font-size:12px}
+.nav a{opacity:.8}.nav a:hover,.nav a.active{opacity:1}
+.nav a.active{border-bottom:1px solid var(--gold);padding-bottom:7px}
+.nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;gap:12px;border:1px solid transparent;background:var(--paper);color:var(--green);padding:14px 19px;font-size:12px;font-weight:600;cursor:pointer;transition:.2s}
+.nav-cta:hover,.button:hover{background:var(--gold);transform:translateY(-2px)}
+.menu-toggle{display:none;background:none;border:0;color:white;font-size:24px}
+.page-hero{min-height:320px;background:linear-gradient(90deg,rgba(10,20,15,.82),rgba(10,20,15,.28)),url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85") center 50%/cover;color:white;display:flex;align-items:end;padding:55px 7%}
+.eyebrow{text-transform:uppercase;letter-spacing:2.6px;font-size:10px;font-weight:600;color:#cdb68e}
+h1,h2,h3,p{margin-top:0}
+.page-hero h1{font:clamp(45px,6vw,72px)/1.05 "Playfair Display",serif;margin:18px 0}
+.page-hero p{max-width:480px;font-size:13px;line-height:1.9;color:#eeeae1;margin:0}
+main{max-width:1500px;margin:auto}
+.collection{padding:55px 7% 100px}
+.collection-heading{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:30px}
+.collection-heading h2{font:clamp(30px,4vw,43px) "Playfair Display",serif;margin:10px 0 0}
+.collection-heading p{font-size:11px;line-height:1.8;color:var(--muted);margin:0}
+.filters{background:var(--paper);border:1px solid var(--line);padding:20px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr auto;gap:12px;align-items:end;margin-bottom:26px}
+.field label{display:block;font-size:10px;color:var(--muted);margin-bottom:9px}
+.field input,.field select{width:100%;height:44px;border:1px solid var(--line);border-radius:0;background:white;color:var(--green);padding:0 11px;font-size:11px;min-width:0}
+.filter-buttons{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:25px}
+.filter-chip{background:transparent;border:1px solid var(--line);padding:10px 16px;font-size:11px;color:var(--green);cursor:pointer}
+.filter-chip.active,.filter-chip:hover{background:var(--green);color:white;border-color:var(--green)}
+.results-row{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:28px 0 18px;font-size:11px;color:var(--muted)}
+.results-row strong{color:var(--green)}
+.property-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.card{background:var(--paper);border:1px solid var(--line);min-width:0;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 15px 35px #15241e10}
+.image-wrap{height:245px;position:relative;overflow:hidden;background:#e8e6df}
+.image-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover .image-wrap img{transform:scale(1.045)}
+.status{position:absolute;top:14px;left:14px;background:var(--paper);font-size:9px;text-transform:uppercase;letter-spacing:1px;padding:8px 10px}
+.heart{position:absolute;top:12px;right:12px;width:34px;height:34px;background:#fffefaee;border:0;border-radius:50%;font-size:19px;cursor:pointer;color:var(--green)}
+.heart.saved{background:var(--green);color:white}
+.card-info{padding:20px}
+.location{font-size:9px;letter-spacing:1.2px;color:var(--muted);margin-bottom:10px;text-transform:uppercase}
+.card h3{font:23px "Playfair Display",serif;margin:0 0 12px}
+.price{font-size:13px;font-weight:700}
+.specs{display:flex;gap:13px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:17px;padding-top:16px;color:var(--muted);font-size:10px}
+.card-bottom{border-top:1px solid var(--line);margin-top:17px;padding-top:14px;display:flex;justify-content:space-between;align-items:center;font-size:11px}
+.details-link{border-bottom:1px solid var(--gold);padding-bottom:5px}
+.empty{display:none;padding:60px 20px;text-align:center;border:1px solid var(--line);background:var(--paper)}
+.empty h3{font:29px "Playfair Display",serif}
+.empty p{font-size:12px;color:var(--muted)}
+.pagination{display:flex;justify-content:center;gap:8px;margin-top:42px}
+.pagination button{width:38px;height:38px;border:1px solid var(--line);background:transparent;cursor:pointer}
+.pagination button.active,.pagination button:hover{background:var(--green);border-color:var(--green);color:white}
+.note{font-size:10px;color:var(--muted);line-height:1.8;margin-top:26px}
+.footer{background:#101b16;color:#eeeae1;padding:45px 7% 24px}
+.footer-top{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap;padding-bottom:30px}
+.footer-note{font-size:11px;color:#b8bdb4;line-height:1.8;margin-top:18px}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap;font-size:11px}
+.footer-bottom{border-top:1px solid #ffffff24;padding-top:20px;color:#adb3a9;font-size:10px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+@media(max-width:1000px){.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.filters .button{min-height:44px}.property-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.site-header{height:70px;padding:0 5%}.menu-toggle{display:block}.nav{display:none;position:absolute;top:69px;left:0;right:0;background:var(--green);padding:24px 6%;flex-direction:column;align-items:stretch;gap:22px}.nav.open{display:flex}.nav-cta{align-self:flex-start}.page-hero{min-height:310px;padding:40px 6%}.collection{padding:42px 5% 70px}.collection-heading{align-items:start;flex-direction:column}.image-wrap{height:210px}.card-info{padding:15px}.card h3{font-size:20px}}
+@media(max-width:480px){.filters{grid-template-columns:1fr 1fr;gap:10px;padding:14px}.filters .field:first-child{grid-column:1/-1}.filters .button{grid-column:1/-1}.property-grid{grid-template-columns:1fr}.image-wrap{height:250px}.filter-chip{padding:9px 12px}.results-row{align-items:start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="index.html">AUREL<small>ESTATES</small></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  <nav class="nav" id="nav">
+    <a href="index.html">Home</a>
+    <a href="properties.html" class="active">Properties</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a class="nav-cta" href="contact.html">Let's talk ↗</a>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div>
+    <div class="eyebrow">A considered collection</div>
+    <h1>Find your kind of place.</h1>
+    <p>From quiet garden homes to considered city living, explore spaces that fit the way you want to live.</p>
+  </div>
+</section>
+
+<main>
+<section class="collection">
+  <div class="collection-heading">
+    <div><div class="eyebrow">Explore Aurel</div><h2>Properties with a point of view.</h2></div>
+    <p>Browse our concept collection<br>and find somewhere to begin.</p>
+  </div>
+
+  <div class="filters" role="search">
+    <div class="field">
+      <label for="search">Search properties</label>
+      <input id="search" type="search" placeholder="Try Karen, villa, garden…">
+    </div>
+    <div class="field">
+      <label for="location">Location</label>
+      <select id="location">
+        <option value="">All locations</option>
+        <option value="Karen">Karen</option>
+        <option value="Lavington">Lavington</option>
+        <option value="Westlands">Westlands</option>
+        <option value="Kilimani">Kilimani</option>
+        <option value="Runda">Runda</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="type">Property type</label>
+      <select id="type">
+        <option value="">All types</option>
+        <option value="House">House / villa</option>
+        <option value="Apartment">Apartment</option>
+        <option value="Townhouse">Townhouse</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="bedrooms">Bedrooms</label>
+      <select id="bedrooms">
+        <option value="">Any</option>
+        <option value="2">2+ bedrooms</option>
+        <option value="3">3+ bedrooms</option>
+        <option value="4">4+ bedrooms</option>
+        <option value="5">5+ bedrooms</option>
+      </select>
+    </div>
+    <button type="button" class="button" id="reset">Reset filters ↺</button>
+  </div>
+
+  <div class="filter-buttons" aria-label="Listing category">
+    <button class="filter-chip active" data-category="All">All properties</button>
+    <button class="filter-chip" data-category="Sale">For sale</button>
+    <button class="filter-chip" data-category="Rent">For rent</button>
+  </div>
+
+  <div class="results-row">
+    <span id="resultCount"><strong>6</strong> properties in the collection</span>
+    <span>Illustrative properties · Kenya</span>
+  </div>
+
+  <div class="property-grid" id="propertyGrid">
+    <article class="card" data-location="Karen" data-type="House" data-bedrooms="4" data-category="Sale" data-search="haven residence modern garden villa karen family home">
+      <div class="image-wrap">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1100&q=85" alt="Contemporary villa with a landscaped garden" loading="lazy">
+        <span class="status">For sale · Sample</span><button class="heart" aria-label="Save The Haven Residence" aria-pressed="false">♡</button>
+      </div>
+      <div class="card-info">
+        <div class="location">Karen, Nairobi</div><h3>The Haven Residence</h3>
+        <div class="price">KSh 85,000,000</div>
+        <div class="specs"><span>4 beds</span><span>4 baths</span><span>Garden</span></div>
+        <div class="card-bottom"><span>House / villa</span><a class="details-link" href="property.html?id=haven">View property ↗</a></div>
+      </div>
+    </article>
+
+    <article class="card" data-location="Lavington" data-type="House" data-bedrooms="3" data-category="Sale" data-search="serenity heights house lavington townhouse garden">
+      <div class="image-wrap">
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1100&q=85" alt="Modern residence with a quiet, warm interior" loading="lazy">
+        <span class="status">For sale · Sample</span><button class="heart" aria-label="Save Serenity Heights" aria-pressed="false">♡</button>
+      </div>
+      <div class="card-info">
+        <div class="location">Lavington, Nairobi</div><h3>Serenity Heights</h3>
+        <div class="price">KSh 42,000,000</div>
+        <div class="specs"><span>3 beds</span><span>3 baths</span><span>Balcony</span></div>
+        <div class="card-bottom"><span>House / villa</span><a class="details-link" href="property.html?id=serenity">View property ↗</a></div>
+      </div>
+    </article>
+
+    <article class="card" data-location="Westlands" data-type="Apartment" data-bedrooms="2" data-category="Rent" data-search="urban loft apartment westlands city living">
+      <div class="image-wrap">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1100&q=85" alt="Elegant apartment with open-plan living space" loading="lazy">
+        <span class="status">For rent · Sample</span><button class="heart" aria-label="Save The Urban Loft" aria-pressed="false">♡</button>
+      </div>
+      <div class="card-info">
+        <div class="location">Westlands, Nairobi</div><h3>The Urban Loft</h3>
+        <div class="price">KSh 180,000 / month</div>
+        <div class="specs"><span>2 beds</span><span>2 baths</span><span>City living</span></div>
+        <div class="card-bottom"><span>Apartment</span><a class="details-link" href="property.html?id=urban">View property ↗</a></div>
+      </div>
+    </article>
+
+    <article class="card" data-location="Kilimani" data-type="Apartment" data-bedrooms="3" data-category="Rent" data-search="kilimani apartment pearl residence spacious balcony">
+      <div class="image-wrap">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=85" alt="Contemporary residence with large windows" loading="lazy">
+        <span class="status">For rent · Sample</span><button class="heart" aria-label="Save Pearl Residence" aria-pressed="false">♡</button>
+      </div>
+      <div class="card-info">
+        <div class="location">Kilimani, Nairobi</div><h3>Pearl Residence</h3>
+        <div class="price">KSh 145,000 / month</div>
+        <div class="specs"><span>3 beds</span><span>2 baths</span><span>Balcony</span></div>
+        <div class="card-bottom"><span>Apartment</span><a class="details-link" href="property.html?id=pearl">View property ↗</a></div>
+      </div>
+    </article>
+
+    <article class="card" data-location="Runda" data-type="House" data-bedrooms="5" data-category="Sale" data-search="runda garden villa five bedroom estate">
+      <div class="image-wrap">
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1100&q=85" alt="Large modern home surrounded by greenery" loading="lazy">
+        <span class="status">For sale · Sample</span><button class="heart" aria-label="Save Garden Villa" aria-pressed="false">♡</button>
+      </div>
+      <div class="card-info">
+        <div class="location">Runda, Nairobi</div><h3>Garden Villa</h3>
+        <div class="price">KSh 120,000,000</div>
+        <div class="specs"><span>5 beds</span><span>5 baths</span><span>Private garden</span></div>
+        <div class="card-bottom"><span>House / villa</span><a class="details-link" href="property.html?id=garden">View property ↗</a></div>
+      </div>
+    </article>
+
+    <article class="card" data-location="Lavington" data-type="Townhouse" data-bedrooms="4" data-category="Sale" data-search="lavington townhouse courtyard terrace family home">
+      <div class="image-wrap">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1100&q=85" alt="Modern townhouse with architectural details" loading="lazy">
+        <span class="status">For sale · Sample</span><button class="heart" aria-label="Save Courtyard House" aria-pressed="false">♡</button>
+      </div>
+      <div class="card-info">
+        <div class="location">Lavington, Nairobi</div><h3>Courtyard House</h3>
+        <div class="price">KSh 68,000,000</div>
+        <div class="specs"><span>4 beds</span><span>4 baths</span><span>Terrace</span></div>
+        <div class="card-bottom"><span>Townhouse</span><a class="details-link" href="property.html?id=courtyard">View property ↗</a></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="empty" id="empty">
+    <h3>No matching properties.</h3>
+    <p>Try a different location or remove one of your filters.</p>
+    <button class="button" id="emptyReset">Clear filters ↺</button>
+  </div>
+
+  <p class="note">This website is a fictional portfolio concept. Names, prices, property details and availability are illustrative and do not represent confirmed listings.</p>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div><a class="logo" href="index.html">AUREL<small>ESTATES</small></a><p class="footer-note">A considered real estate experience.<br>Concept brand for demonstration purposes.</p></div>
+    <div class="footer-links"><a href="index.html">Home</a><a href="properties.html">Properties</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Aurel Estates · Concept demonstration</span><span>Designed with intention.</span></div>
+</footer>
+
+<script>
+const searchInput=document.getElementById("search");
+const locationSelect=document.getElementById("location");
+const typeSelect=document.getElementById("type");
+const bedroomSelect=document.getElementById("bedrooms");
+const cards=[...document.querySelectorAll(".card")];
+const chips=[...document.querySelectorAll(".filter-chip")];
+const resultCount=document.getElementById("resultCount");
+const empty=document.getElementById("empty");
+let activeCategory="All";
+
+function filterProperties(){
+  const query=searchInput.value.trim().toLowerCase();
+  const location=locationSelect.value;
+  const type=typeSelect.value;
+  const bedrooms=Number(bedroomSelect.value||0);
+  let shown=0;
+
+  cards.forEach(card=>{
+    const matchesQuery=!query||(card.dataset.search+" "+card.dataset.location+" "+card.dataset.type).toLowerCase().includes(query);
+    const matchesLocation=!location||card.dataset.location===location;
+    const matchesType=!type||card.dataset.type===type;
+    const matchesBedrooms=!bedrooms||Number(card.dataset.bedrooms)>=bedrooms;
+    const matchesCategory=activeCategory==="All"||card.dataset.category===activeCategory;
+    const visible=matchesQuery&&matchesLocation&&matchesType&&matchesBedrooms&&matchesCategory;
+    card.hidden=!visible;
+    if(visible)shown++;
+  });
+
+  resultCount.innerHTML="<strong>"+shown+"</strong> "+(shown===1?"property":"properties")+" found";
+  empty.style.display=shown?"none":"block";
+  document.getElementById("propertyGrid").style.display=shown?"grid":"none";
+}
+[searchInput,locationSelect,typeSelect,bedroomSelect].forEach(el=>{
+  el.addEventListener(el.tagName==="INPUT"?"input":"change",filterProperties);
+});
+chips.forEach(chip=>chip.addEventListener("click",()=>{
+  activeCategory=chip.dataset.category;
+  chips.forEach(other=>other.classList.toggle("active",other===chip));
+  filterProperties();
+}));
+function resetFilters(){
+  searchInput.value="";
+  locationSelect.value="";
+  typeSelect.value="";
+  bedroomSelect.value="";
+  activeCategory="All";
+  chips.forEach(chip=>chip.classList.toggle("active",chip.dataset.category==="All"));
+  filterProperties();
+}
+document.getElementById("reset").addEventListener("click",resetFilters);
+document.getElementById("emptyReset").addEventListener("click",resetFilters);
+
+document.querySelectorAll(".heart").forEach(button=>button.addEventListener("click",event=>{
+  event.preventDefault();
+  const saved=button.classList.toggle("saved");
+  button.textContent=saved?"♥":"♡";
+  button.setAttribute("aria-pressed",String(saved));
+}));
+
+const menuToggle=document.getElementById("menuToggle");
+const nav=document.getElementById("nav");
+menuToggle.addEventListener("click",()=>{
+  const open=nav.classList.toggle("open");
+  menuToggle.textContent=open?"×":"☰";
+  menuToggle.setAttribute("aria-expanded",String(open));
+  menuToggle.setAttribute("aria-label",open?"Close navigation":"Open navigation");
+});
+nav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{
+  nav.classList.remove("open");
+  menuToggle.textContent="☰";
+  menuToggle.setAttribute("aria-expanded","false");
+}));
+filterProperties();
+</script>
+</body>
+</html>
