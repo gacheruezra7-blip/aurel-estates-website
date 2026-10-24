@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#15241e">
+<title>AUREL ESTATES — Find Your Place</title>
+<meta name="description" content="Discover considered homes, contemporary apartments and exceptional properties across Kenya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest:#15241e;
+  --forest2:#20382d;
+  --cream:#f6f4ee;
+  --paper:#fffefa;
+  --muted:#777a70;
+  --line:#e4e2da;
+  --gold:#c7ad80;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {margin:0;background:var(--cream);color:var(--forest);font-family:"DM Sans",sans-serif}
+a {color:inherit;text-decoration:none}
+button,input,select {font:inherit}
+button,a {-webkit-tap-highlight-color:transparent}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible {outline:2px solid var(--gold);outline-offset:4px}
+img {display:block;max-width:100%}
+.site-header {
+  height:82px;position:absolute;inset:0 0 auto;z-index:10;
+  padding:0 6.3%;display:flex;align-items:center;justify-content:space-between;
+  color:white;border-bottom:1px solid rgba(255,255,255,.19)
+}
+.logo {font-family:"Playfair Display",serif;font-size:25px;letter-spacing:4px;line-height:1}
+.logo small {display:block;font:8px "DM Sans",sans-serif;letter-spacing:5px;margin-top:5px;text-align:center}
+.nav {display:flex;align-items:center;gap:32px;font-size:12px}
+.nav a:not(.nav-cta) {opacity:.83;transition:opacity .2s}
+.nav a:hover {opacity:1}
+.nav-cta,.button {
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  background:var(--paper);color:var(--forest);padding:14px 20px;
+  border:1px solid transparent;font-size:12px;font-weight:600;cursor:pointer;transition:.25s
+}
+.nav-cta {background:var(--paper);border-radius:2px}
+.button:hover,.nav-cta:hover {background:var(--gold);color:#15241e;transform:translateY(-2px)}
+.button-dark {background:var(--forest);color:white}
+.button-dark:hover {background:var(--forest2);color:white}
+.menu-toggle {display:none;background:none;border:0;color:white;font-size:24px}
+.journey {height:230vh;position:relative;background:#15241e}
+.journey-stage {height:100svh;min-height:590px;position:sticky;top:0;overflow:hidden;background:#15241e;color:white}
+.scene-photo {position:absolute;inset:0;background-position:center;background-size:cover;will-change:transform,opacity}
+.exterior {
+  background-image:url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2400&q=85");
+  transform:scale(1);z-index:1
+}
+.interior {
+  background-image:url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2400&q=85");
+  opacity:0;transform:scale(1.1);z-index:2
+}
+.scene-shade {position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(90deg,rgba(7,15,11,.7),rgba(7,15,11,.22) 55%,rgba(7,15,11,.08)),linear-gradient(0deg,rgba(7,15,11,.42),transparent 42%)}
+.hero-copy {position:absolute;z-index:4;top:50%;left:10%;transform:translateY(-39%);max-width:650px;transition:opacity .12s}
+.eyebrow {text-transform:uppercase;font-size:10px;letter-spacing:3px;font-weight:600;color:#e1cba7;display:flex;align-items:center;gap:12px}
+.eyebrow:before {content:"";width:30px;height:1px;background:var(--gold)}
+h1,h2,h3,p {margin-top:0}
+.hero-copy h1 {font:clamp(47px,7vw,94px)/1.03 "Playfair Display",serif;letter-spacing:-2px;margin:25px 0 20px;max-width:640px}
+.hero-copy p {font-size:14px;line-height:1.9;max-width:400px;color:#eeeae1}
+.hero-actions {display:flex;gap:12px;flex-wrap:wrap;margin-top:31px}
+.button-outline {border-color:rgba(255,255,255,.65);background:transparent;color:white}
+.button-outline:hover {border-color:var(--gold)}
+.hero-bottom {position:absolute;z-index:4;left:6.3%;right:6.3%;bottom:30px;display:flex;justify-content:space-between;align-items:end;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#eeeae1}
+.scroll-hint {display:flex;align-items:center;gap:12px}
+.scroll-line {height:38px;width:1px;background:rgba(255,255,255,.7);animation:hint 1.5s infinite alternate}
+.scene-caption {position:absolute;z-index:4;right:8%;bottom:18%;opacity:0;max-width:340px;text-align:right;transform:translateY(18px);transition:opacity .2s,transform .2s}
+.scene-caption h2 {font:clamp(34px,4vw,56px)/1.1 "Playfair Display",serif;margin:18px 0}
+.scene-caption p {font-size:13px;line-height:1.8;color:#ece9df}
+.progress-track {position:absolute;z-index:5;bottom:0;left:0;width:100%;height:3px;background:rgba(255,255,255,.2)}
+.progress-fill {height:100%;width:0;background:var(--gold)}
+@keyframes hint {to{transform:scaleY(.6);transform-origin:top;opacity:.45}}
+.section {padding:105px 7%}
+.section-head {display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:38px}
+.section-head h2 {font:clamp(34px,4vw,54px)/1.1 "Playfair Display",serif;margin:14px 0 0}
+.section-head p {max-width:350px;font-size:12px;line-height:1.9;color:var(--muted);margin-bottom:3px}
+.text-link {font-size:12px;display:inline-flex;align-items:center;gap:12px;border-bottom:1px solid var(--gold);padding:0 0 8px}
+.property-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.property-card {min-width:0;background:var(--paper);border:1px solid var(--line);transition:transform .25s,box-shadow .25s}
+.property-card:hover {transform:translateY(-5px);box-shadow:0 15px 35px #15241e0c}
+.property-image {height:250px;position:relative;overflow:hidden;background:#ddd}
+.property-image img {width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.property-card:hover .property-image img {transform:scale(1.045)}
+.tag {position:absolute;top:14px;left:14px;background:var(--paper);font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:8px 10px}
+.property-info {padding:21px}
+.property-location {font-size:10px;letter-spacing:.5px;color:var(--muted);margin-bottom:10px}
+.property-info h3 {font:24px "Playfair Display",serif;margin:0 0 13px}
+.price {font-size:13px;font-weight:700}
+.specs {display:flex;gap:13px;flex-wrap:wrap;padding-top:17px;margin-top:17px;border-top:1px solid var(--line);color:var(--muted);font-size:10px}
+.intro {background:var(--forest);color:#f9f7f0;display:grid;grid-template-columns:1fr 1fr;gap:8%;align-items:center}
+.intro-image {min-height:500px;background:url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=85") center/cover}
+.intro-copy {padding:25px 0}
+.intro-copy h2 {font:clamp(40px,5vw,65px)/1.12 "Playfair Display",serif;margin:20px 0}
+.intro-copy p {font-size:13px;line-height:2;color:#d0d4cb;max-width:440px}
+.stats {display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:38px;padding-top:26px;border-top:1px solid #ffffff2e}
+.stat strong {display:block;font:32px "Playfair Display",serif;margin-bottom:8px}
+.stat span {font-size:10px;color:#c4c8bf}
+.values {display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:45px}
+.value {padding:25px 22px 0 0}
+.value b {font:21px "Playfair Display",serif;display:block;margin-bottom:9px}
+.value p {font-size:11px;line-height:1.8;color:var(--muted)}
+.cta-band {margin:0 7% 90px;padding:48px 5%;background:#e9e5d9;display:flex;justify-content:space-between;align-items:center;gap:25px}
+.cta-band h2 {font:clamp(28px,3vw,43px)/1.15 "Playfair Display",serif;margin:10px 0 0}
+.site-footer {background:#101b16;color:#eeeae1;padding:48px 7% 25px}
+.footer-top {display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:40px}
+.footer-note {font-size:11px;line-height:1.8;color:#b8bdb4;max-width:290px;margin-top:20px}
+.footer-links {display:flex;gap:22px;flex-wrap:wrap;font-size:11px;color:#d6d8d1}
+.footer-bottom {border-top:1px solid #ffffff24;padding-top:20px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:10px;color:#adb3a9}
+@media(max-width:800px) {
+  .site-header {height:72px;padding:0 5%}
+  .menu-toggle {display:block}
+  .nav {display:none;position:absolute;top:71px;left:0;right:0;background:var(--forest);padding:25px;align-items:stretch;gap:22px;flex-direction:column}
+  .nav.open {display:flex}
+  .nav-cta {align-self:flex-start}
+  .hero-copy {left:7%;right:7%;top:48%}
+  .hero-copy h1 {font-size:clamp(47px,11vw,72px);letter-spacing:-1.4px}
+  .hero-copy p {font-size:12px;max-width:320px}
+  .hero-bottom {left:7%;right:7%;bottom:23px}
+  .scene-caption {right:7%;left:7%;bottom:17%;max-width:400px}
+  .section {padding:75px 6%}
+  .section-head {align-items:start;flex-direction:column}
+  .property-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+  .property-image {height:190px}
+  .property-info {padding:14px}
+  .property-info h3 {font-size:20px}
+  .intro {grid-template-columns:1fr;gap:35px}
+  .intro-image {min-height:330px;order:2}
+  .intro-copy {order:1}
+  .values {grid-template-columns:1fr 1fr;row-gap:18px}
+  .cta-band {margin:0 6% 65px;align-items:start;flex-direction:column}
+}
+@media(max-width:470px) {
+  .journey-stage {min-height:560px}
+  .property-grid {grid-template-columns:1fr}
+  .property-image {height:245px}
+  .hero-copy h1 {font-size:49px}
+  .stats {grid-template-columns:1fr 1fr}
+  .stats .stat:last-child {grid-column:1/-1}
+  .intro-image {min-height:270px}
+  .footer-links {gap:16px}
+}
+@media(prefers-reduced-motion:reduce) {
+  html {scroll-behavior:auto}
+  *,*::before,*::after {animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="index.html" aria-label="Aurel Estates home">AUREL<small>ESTATES</small></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  <nav class="nav" id="nav">
+    <a href="index.html">Home</a>
+    <a href="properties.html">Properties</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a class="nav-cta" href="contact.html">Let's talk ↗</a>
+  </nav>
+</header>
+
+<main>
+  <section class="journey" id="journey" aria-label="Explore the home">
+    <div class="journey-stage" id="journeyStage">
+      <div class="scene-photo exterior" id="exterior"></div>
+      <div class="scene-photo interior" id="interior"></div>
+      <div class="scene-shade"></div>
+
+      <div class="hero-copy" id="heroCopy">
+        <div class="eyebrow">Considered property · Kenya</div>
+        <h1>Find a place<br>to become.</h1>
+        <p>Thoughtfully selected homes and exceptional spaces for the life you're building.</p>
+        <div class="hero-actions">
+          <a class="button" href="properties.html">Explore properties <span>↗</span></a>
+          <a class="button button-outline" href="#our-approach">Discover Aurel</a>
+        </div>
+      </div>
+
+      <div class="scene-caption" id="sceneCaption">
+        <div class="eyebrow">Come a little closer</div>
+        <h2>Beyond the<br>threshold.</h2>
+        <p>Good spaces do more than look beautiful. They change how coming home feels.</p>
+        <a class="button" href="properties.html">Find your space ↗</a>
+      </div>
+
+      <div class="hero-bottom">
+        <span>Spaces that feel like yours</span>
+        <span class="scroll-hint"><span class="scroll-line"></span> Scroll to step inside</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="featured">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">A considered collection</div>
+        <h2>Spaces worth coming home to.</h2>
+      </div>
+      <p>A small selection of homes chosen for their character, thoughtful design and the lives they make room for.</p>
+    </div>
+
+    <div class="property-grid">
+      <article class="property-card">
+        <a href="property.html?id=haven" aria-label="View The Haven Residence">
+          <div class="property-image">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85" alt="Contemporary villa with a landscaped garden" loading="lazy">
+            <span class="tag">For sale · Sample</span>
+          </div>
+          <div class="property-info">
+            <div class="property-location">KAREN, NAIROBI</div>
+            <h3>The Haven Residence</h3>
+            <div class="price">KSh 85,000,000</div>
+            <div class="specs"><span>4 bedrooms</span><span>4 bathrooms</span><span>Garden</span></div>
+          </div>
+        </a>
+      </article>
+
+      <article class="property-card">
+        <a href="property.html?id=serenity" aria-label="View Serenity Heights">
+          <div class="property-image">
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85" alt="Contemporary home with warm neutral interiors" loading="lazy">
+            <span class="tag">For sale · Sample</span>
+          </div>
+          <div class="property-info">
+            <div class="property-location">LAVINGTON, NAIROBI</div>
+            <h3>Serenity Heights</h3>
+            <div class="price">KSh 42,000,000</div>
+            <div class="specs"><span>3 bedrooms</span><span>3 bathrooms</span><span>Balcony</span></div>
+          </div>
+        </a>
+      </article>
+
+      <article class="property-card">
+        <a href="property.html?id=urban" aria-label="View The Urban Loft">
+          <div class="property-image">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85" alt="Elegant apartment living area" loading="lazy">
+            <span class="tag">For rent · Sample</span>
+          </div>
+          <div class="property-info">
+            <div class="property-location">WESTLANDS, NAIROBI</div>
+            <h3>The Urban Loft</h3>
+            <div class="price">KSh 180,000 / month</div>
+            <div class="specs"><span>2 bedrooms</span><span>2 bathrooms</span><span>City living</span></div>
+          </div>
+        </a>
+      </article>
+    </div>
+    <p style="font-size:10px;color:#777a70;margin-top:18px">Concept demonstration only. Property names, prices and availability are illustrative.</p>
+    <p style="margin-top:28px"><a class="text-link" href="properties.html">View the full collection ↗</a></p>
+  </section>
+
+  <section class="section intro" id="our-approach">
+    <div class="intro-image" role="img" aria-label="Warm, considered modern living space"></div>
+    <div class="intro-copy">
+      <div class="eyebrow">A different point of view</div>
+      <h2>Property is personal.<br>Finding it should be too.</h2>
+      <p>Aurel Estates is a real estate brand concept built around a simple belief: a great property is more than its address. It's the light in the morning, the room to grow, and the feeling you get when you walk through the door.</p>
+      <p>We bring a considered eye to every space, making it easier to explore possibilities and find a place that feels right for you.</p>
+      <a class="button button-outline" href="about.html">Our approach ↗</a>
+      <div class="stats">
+        <div class="stat"><strong>Thoughtful</strong><span>Curated spaces</span></div>
+        <div class="stat"><strong>Personal</strong><span>Human guidance</span></div>
+        <div class="stat"><strong>Local</strong><span>Kenya focused</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="eyebrow">The Aurel difference</div>
+    <div class="values">
+      <div class="value"><b>Considered, not crowded.</b><p>Clear property information and a focused collection that gives every home room to speak.</p></div>
+      <div class="value"><b>Details that matter.</b><p>Explore the spaces, features and neighbourhood context that help you make an informed decision.</p></div>
+      <div class="value"><b>A human connection.</b><p>Make the next step feel simple, with a straightforward way to ask questions and arrange a viewing.</p></div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div><div class="eyebrow">Your next chapter</div><h2>Let's find your place.</h2></div>
+    <a class="button button-dark" href="contact.html">Start a conversation ↗</a>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div><a class="logo" href="index.html">AUREL<small>ESTATES</small></a><p class="footer-note">A considered real estate experience.<br>Concept brand for demonstration purposes.</p></div>
+    <div class="footer-links"><a href="index.html">Home</a><a href="properties.html">Properties</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Aurel Estates · Concept demonstration</span><span>Designed with intention.</span></div>
+</footer>
+
+<script>
+const journey = document.getElementById("journey");
+const exterior = document.getElementById("exterior");
+const interior = document.getElementById("interior");
+const heroCopy = document.getElementById("heroCopy");
+const caption = document.getElementById("sceneCaption");
+const progressFill = document.getElementById("progressFill");
+let ticking = false;
+
+function clamp(n,min,max){return Math.max(min,Math.min(max,n))}
+function renderJourney(){
+  const rect = journey.getBoundingClientRect();
+  const available = journey.offsetHeight - window.innerHeight;
+  const progress = available > 0 ? clamp(-rect.top / available,0,1) : 0;
+
+  // The exterior image carries the architecture, including the glass doors.
+  // Scroll zooms toward the facade, then reveals the interior photograph.
+  const enter = clamp((progress - 0.22) / 0.47,0,1);
+  exterior.style.transform = "scale(" + (1 + progress * 0.48) + ")";
+  exterior.style.opacity = String(1 - enter * 0.98);
+  interior.style.opacity = String(enter);
+  interior.style.transform = "scale(" + (1.12 - enter * 0.12) + ")";
+  heroCopy.style.opacity = String(1 - clamp(progress / 0.36,0,1));
+  heroCopy.style.transform = "translateY(calc(-39% + " + (progress * -35) + "px))";
+  caption.style.opacity = String(clamp((progress - 0.48) / 0.23,0,1));
+  caption.style.transform = "translateY(" + (18 - clamp((progress-0.48)/0.23,0,1)*18) + "px)";
+  progressFill.style.width = (progress * 100) + "%";
+  ticking = false;
+}
+function requestRender(){
+  if(!ticking){window.requestAnimationFrame(renderJourney);ticking=true}
+}
+window.addEventListener("scroll",requestRender,{passive:true});
+window.addEventListener("resize",requestRender);
+renderJourney();
+
+const menuToggle=document.getElementById("menuToggle");
+const nav=document.getElementById("nav");
+menuToggle.addEventListener("click",()=>{
+  const open=nav.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded",String(open));
+  menuToggle.setAttribute("aria-label",open?"Close navigation":"Open navigation");
+  menuToggle.textContent=open?"×":"☰";
+});
+nav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{
+  nav.classList.remove("open");
+  menuToggle.setAttribute("aria-expanded","false");
+  menuToggle.textContent="☰";
+}));
+</script>
+</body>
+</html>
