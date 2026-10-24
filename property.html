@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#15241e">
+<title>Property Details | AUREL ESTATES</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--green:#15241e;--green2:#243a2f;--cream:#f6f4ee;--paper:#fffefa;--muted:#777a70;--line:#e4e2da;--gold:#c7ad80}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--green);font-family:"DM Sans",sans-serif}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.site-header{height:78px;background:var(--green);color:white;padding:0 7%;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:5}
+.logo{font:25px "Playfair Display",serif;letter-spacing:4px;line-height:1}
+.logo small{display:block;font:8px "DM Sans",sans-serif;letter-spacing:5px;text-align:center;margin-top:5px}
+.nav{display:flex;align-items:center;gap:30px;font-size:12px}
+.nav a{opacity:.85}.nav a:hover{opacity:1}
+.nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--green);color:white;border:1px solid transparent;padding:14px 19px;font-size:12px;font-weight:600;cursor:pointer;transition:.22s}
+.nav-cta{background:var(--paper);color:var(--green)}
+.button:hover,.nav-cta:hover{background:var(--gold);color:var(--green);transform:translateY(-2px)}
+.button-light{background:var(--paper);border-color:var(--line);color:var(--green)}
+.button-light:hover{background:var(--cream)}
+.menu-toggle{display:none;background:none;border:0;color:white;font-size:24px}
+main{max-width:1500px;margin:auto}
+.wrap{padding-left:7%;padding-right:7%}
+.breadcrumb{display:flex;gap:10px;flex-wrap:wrap;padding-top:28px;padding-bottom:24px;font-size:11px;color:var(--muted)}
+.breadcrumb a:hover{color:var(--green)}
+.sep{color:#b7b5aa}
+.heading-row{display:flex;justify-content:space-between;align-items:end;gap:20px;padding-bottom:25px}
+.eyebrow{font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:#9b8057;font-weight:700}
+h1,h2,h3,p{margin-top:0}
+h1{font:clamp(36px,5vw,58px)/1.1 "Playfair Display",serif;letter-spacing:-.8px;margin:12px 0}
+.subtitle{font-size:12px;color:var(--muted);line-height:1.8;margin:0}
+.price-block{text-align:right;flex-shrink:0}
+.price{font-size:22px;font-weight:700;letter-spacing:-.5px}
+.price-note{font-size:10px;color:var(--muted);margin-top:6px}
+.gallery{display:grid;grid-template-columns:1.65fr 1fr;grid-template-rows:220px 220px;gap:10px;position:relative}
+.photo{position:relative;overflow:hidden;min-width:0;background:#e1dfd6}
+.photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.photo:hover img{transform:scale(1.025)}
+.photo-main{grid-row:1/3}
+.photo button{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent;cursor:zoom-in}
+.photo-label{position:absolute;top:17px;left:17px;background:#fffefaed;padding:9px 12px;font-size:9px;text-transform:uppercase;letter-spacing:1px;pointer-events:none}
+.gallery-count{position:absolute;right:17px;bottom:17px;color:white;background:#15241eae;padding:10px 13px;font-size:10px;pointer-events:none}
+.content{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:55px;padding-top:45px;padding-bottom:100px;align-items:start}
+.main-column{min-width:0}
+.section{padding:0 0 33px;margin-bottom:32px;border-bottom:1px solid var(--line)}
+.section h2{font:29px "Playfair Display",serif;margin-bottom:18px}
+.description{font-size:12px;line-height:2.05;color:#62675e;max-width:760px}
+.spec-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.spec{background:var(--paper);border:1px solid var(--line);padding:17px 13px}
+.spec-icon{font-size:20px;margin-bottom:12px}
+.spec strong{display:block;font-size:14px;margin-bottom:5px}
+.spec span{display:block;font-size:10px;color:var(--muted)}
+.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 22px}
+.feature{font-size:12px;color:#555c52;display:flex;gap:11px;align-items:center}
+.feature span{color:#a18861;font-size:16px}
+.location-card{background:#ece9e0;padding:25px;display:flex;gap:20px;align-items:center}
+.location-mark{width:42px;height:42px;background:var(--green);color:white;display:grid;place-items:center;font-size:20px;flex-shrink:0}
+.location-card h3{font:22px "Playfair Display",serif;margin-bottom:7px}
+.location-card p{font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:0}
+.sidebar{position:sticky;top:20px}
+.enquiry-card{background:var(--paper);border:1px solid var(--line);padding:25px}
+.enquiry-card h2{font:27px "Playfair Display",serif;margin:0 0 8px}
+.enquiry-card>p{font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:23px}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:10px;font-weight:600;margin-bottom:8px}
+.field input,.field textarea,.field select{display:block;width:100%;border:1px solid var(--line);background:white;padding:12px;font-size:11px;border-radius:0;color:var(--green)}
+.field textarea{min-height:90px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold)}
+.full{width:100%}
+.form-message{display:none;font-size:11px;line-height:1.7;background:#eeece3;padding:13px;margin-top:14px}
+.disclaimer{font-size:9px;color:var(--muted);line-height:1.7;margin-top:14px}
+.share-row{display:flex;gap:10px;margin-top:12px}
+.share-row button{flex:1;background:transparent;border:1px solid var(--line);padding:12px 8px;font-size:10px;cursor:pointer}
+.share-row button:hover{background:var(--cream)}
+.related{padding:0 7% 85px}
+.related-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:26px}
+.related h2{font:clamp(30px,4vw,44px) "Playfair Display",serif;margin:10px 0 0}
+.related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.related-card{background:var(--paper);border:1px solid var(--line)}
+.related-card img{width:100%;height:205px;object-fit:cover}
+.related-info{padding:17px}
+.related-info span{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.related-info h3{font:22px "Playfair Display",serif;margin:10px 0}
+.related-info strong{font-size:12px}
+.not-found{padding:70px 7% 100px}
+.not-found h1{font-size:45px}
+.not-found p{font-size:13px;line-height:1.8;color:var(--muted)}
+.footer{background:#101b16;color:#eeeae1;padding:45px 7% 24px}
+.footer-top{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap;padding-bottom:30px}
+.footer-note{font-size:11px;color:#b8bdb4;line-height:1.8;margin-top:18px}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap;font-size:11px}
+.footer-bottom{border-top:1px solid #ffffff24;padding-top:20px;color:#adb3a9;font-size:10px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.lightbox{display:none;position:fixed;inset:0;z-index:20;background:#07100df2;align-items:center;justify-content:center;padding:25px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:85vh;object-fit:contain}
+.lightbox-close{position:absolute;top:22px;right:25px;color:white;background:transparent;border:0;font-size:31px;cursor:pointer}
+.lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%);background:#ffffff20;border:1px solid #ffffff50;color:white;width:45px;height:45px;cursor:pointer;font-size:22px}
+.lightbox-prev{left:18px}.lightbox-next{right:18px}
+@media(max-width:950px){.content{grid-template-columns:minmax(0,1fr) 285px;gap:25px}.gallery{grid-template-rows:190px 190px}.spec-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.enquiry-card{padding:19px}}
+@media(max-width:700px){
+.site-header{height:70px;padding:0 5%}.menu-toggle{display:block}
+.nav{display:none;position:absolute;top:69px;left:0;right:0;background:var(--green);padding:24px 6%;flex-direction:column;align-items:stretch;gap:22px}
+.nav.open{display:flex}.nav-cta{align-self:flex-start}
+.wrap{padding-left:5%;padding-right:5%}.breadcrumb{padding-top:22px}
+.heading-row{align-items:start;flex-direction:column}.price-block{text-align:left}
+.gallery{grid-template-columns:1fr 1fr;grid-template-rows:260px 125px;gap:7px}
+.photo-main{grid-column:1/3;grid-row:auto}
+.content{grid-template-columns:1fr;gap:35px;padding-top:30px;padding-bottom:65px}
+.sidebar{position:static}.spec-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.related{padding:0 5% 65px}.related-grid{grid-template-columns:1fr 1fr}
+.related-card img{height:150px}.related-info{padding:13px}.related-info h3{font-size:18px}
+}
+@media(max-width:420px){h1{font-size:36px}.gallery{grid-template-rows:230px 105px}.feature-grid{grid-template-columns:1fr}.related-grid{grid-template-columns:1fr}.related-card img{height:220px}.spec{padding:14px 10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="index.html">AUREL<small>ESTATES</small></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  <nav class="nav" id="nav">
+    <a href="index.html">Home</a>
+    <a href="properties.html">Properties</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a class="nav-cta" href="contact.html">Let's talk ↗</a>
+  </nav>
+</header>
+
+<main id="propertyPage">
+  <section class="not-found">
+    <h1>Finding your property…</h1>
+    <p>Loading the selected property.</p>
+  </section>
+</main>
+
+<section class="related" id="relatedSection" hidden>
+  <div class="related-head">
+    <div><div class="eyebrow">Keep exploring</div><h2>Other places to consider.</h2></div>
+    <a href="properties.html" style="font-size:11px;border-bottom:1px solid var(--gold);padding-bottom:7px">All properties ↗</a>
+  </div>
+  <div class="related-grid" id="relatedGrid"></div>
+</section>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div><a class="logo" href="index.html">AUREL<small>ESTATES</small></a><p class="footer-note">A considered real estate experience.<br>Concept brand for demonstration purposes.</p></div>
+    <div class="footer-links"><a href="index.html">Home</a><a href="properties.html">Properties</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Aurel Estates · Concept demonstration</span><span>Illustrative property details</span></div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Property photo gallery">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close gallery">×</button>
+  <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous image">‹</button>
+  <img id="lightboxImage" alt="Expanded property photograph">
+  <button class="lightbox-next" id="lightboxNext" aria-label="Next image">›</button>
+</div>
+
+<script>
+const properties={
+  haven:{
+    name:"The Haven Residence",location:"Karen, Nairobi",type:"House / villa",status:"For sale · Sample",price:"KSh 85,000,000",priceNote:"Illustrative asking price",
+    beds:4,baths:4,area:"420 m²",parking:"2 spaces",year:"Contemporary design",
+    description:"A considered family home concept where natural materials, open living spaces and a generous garden come together. Tall glazing invites daylight into the shared spaces, while quieter rooms provide separation and privacy. The sample listing is intended to demonstrate the level of detail a premium property page can communicate.",
+    features:["Open-plan living and dining","Floor-to-ceiling glazing","Landscaped garden","Kitchen with island","Primary bedroom suite","Dedicated laundry area","Private outdoor terrace","Covered parking"],
+    images:[
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85",
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85"
+    ]
+  },
+  serenity:{
+    name:"Serenity Heights",location:"Lavington, Nairobi",type:"House / villa",status:"For sale · Sample",price:"KSh 42,000,000",priceNote:"Illustrative asking price",
+    beds:3,baths:3,area:"265 m²",parking:"2 spaces",year:"Contemporary design",
+    description:"An airy home concept with a calm material palette, broad windows and an easy connection between the living areas and a private balcony. Its layout is imagined for people who want considered design with enough space for everyday life.",
+    features:["Bright open-plan living","Private balcony","Modern fitted kitchen","Built-in wardrobes","En-suite primary bedroom","Secure parking","Visitor washroom","Storage space"],
+    images:[
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85",
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85",
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85"
+    ]
+  },
+  urban:{
+    name:"The Urban Loft",location:"Westlands, Nairobi",type:"Apartment",status:"For rent · Sample",price:"KSh 180,000 / month",priceNote:"Illustrative monthly rent",
+    beds:2,baths:2,area:"128 m²",parking:"1 space",year:"Modern apartment",
+    description:"A city apartment concept with a clean open-plan living area, generous glazing and a simple, contemporary finish. It's designed to show how a rental listing can communicate space, practical details and atmosphere in one place.",
+    features:["Open-plan living area","Large windows","Fitted kitchen","Two bedrooms","Built-in storage","Secure parking","Lift access","Balcony"],
+    images:[
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85",
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85"
+    ]
+  },
+  pearl:{
+    name:"Pearl Residence",location:"Kilimani, Nairobi",type:"Apartment",status:"For rent · Sample",price:"KSh 145,000 / month",priceNote:"Illustrative monthly rent",
+    beds:3,baths:2,area:"150 m²",parking:"2 spaces",year:"Modern apartment",
+    description:"A spacious apartment concept with well-proportioned rooms, a balcony and a layout that balances shared living with private spaces. The sample details and pricing illustrate how the agency could present a rental property clearly.",
+    features:["Spacious living room","Private balcony","Fitted kitchen","Three bedrooms","Main en-suite","Laundry space","Secure parking","Lift access"],
+    images:[
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85",
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85",
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85"
+    ]
+  },
+  garden:{
+    name:"Garden Villa",location:"Runda, Nairobi",type:"House / villa",status:"For sale · Sample",price:"KSh 120,000,000",priceNote:"Illustrative asking price",
+    beds:5,baths:5,area:"510 m²",parking:"3 spaces",year:"Contemporary design",
+    description:"A larger villa concept for buyers who value privacy, generous entertaining spaces and outdoor greenery. The design language combines contemporary architecture with a warm, natural palette.",
+    features:["Private garden","Large entertaining areas","Five bedrooms","Modern fitted kitchen","Family lounge","Outdoor terrace","Staff accommodation concept","Multiple parking spaces"],
+    images:[
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85",
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85"
+    ]
+  },
+  courtyard:{
+    name:"Courtyard House",location:"Lavington, Nairobi",type:"Townhouse",status:"For sale · Sample",price:"KSh 68,000,000",priceNote:"Illustrative asking price",
+    beds:4,baths:4,area:"335 m²",parking:"2 spaces",year:"Modern townhouse",
+    description:"A townhouse concept organised around a private terrace and courtyard feeling. It combines an open shared living space with separate bedrooms, providing a sample of how lifestyle and layout can be explained on a detailed listing page.",
+    features:["Private terrace","Open living and dining","Contemporary kitchen","Four bedrooms","Main en-suite","Guest washroom","Secure parking","Storage space"],
+    images:[
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85",
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85"
+    ]
+  }
+};
+
+const params=new URLSearchParams(location.search);
+const id=params.get("id")||"haven";
+const property=properties[id];
+const page=document.getElementById("propertyPage");
+const relatedSection=document.getElementById("relatedSection");
+
+function escapeHtml(value){
+ return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+}
+
+if(!property){
+  page.innerHTML='<section class="not-found"><div class="eyebrow">Property not found</div><h1>This space is no longer here.</h1><p>That property link may be incorrect. Explore the full collection to find another place to consider.</p><a class="button" href="properties.html">Browse properties ↗</a></section>';
+}else{
+  document.title=property.name+" | AUREL ESTATES";
+  const featureMarkup=property.features.map(item=>'<div class="feature"><span>＋</span>'+escapeHtml(item)+'</div>').join("");
+  const specs=[
+    ["⌂",property.beds+" bedrooms","Bedrooms"],
+    ["◫",property.baths+" bathrooms","Bathrooms"],
+    ["↔",property.area,"Approx. area"],
+    ["▦",property.parking,"Parking"]
+  ];
+  const specMarkup=specs.map(item=>'<div class="spec"><div class="spec-icon">'+item[0]+'</div><strong>'+escapeHtml(item[1])+'</strong><span>'+escapeHtml(item[2])+'</span></div>').join("");
+
+  page.innerHTML=`
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><a href="properties.html">Properties</a><span class="sep">/</span><span>${escapeHtml(property.name)}</span></div>
+    <div class="heading-row">
+      <div><div class="eyebrow">${escapeHtml(property.status)}</div><h1>${escapeHtml(property.name)}</h1><p class="subtitle">⌖ &nbsp;${escapeHtml(property.location)} &nbsp; · &nbsp; ${escapeHtml(property.type)}</p></div>
+      <div class="price-block"><div class="price">${escapeHtml(property.price)}</div><div class="price-note">${escapeHtml(property.priceNote)}</div></div>
+    </div>
+
+    <div class="gallery" id="gallery">
+      <div class="photo photo-main"><img src="${property.images[0]}" alt="${escapeHtml(property.name)} exterior" fetchpriority="high"><button data-image="0" aria-label="Expand main property image"></button><span class="photo-label">${escapeHtml(property.status)}</span><span class="gallery-count">View photo gallery ↗</span></div>
+      <div class="photo"><img src="${property.images[1]}" alt="${escapeHtml(property.name)} interior view" loading="lazy"><button data-image="1" aria-label="Expand second property image"></button></div>
+      <div class="photo"><img src="${property.images[2]}" alt="${escapeHtml(property.name)} additional view" loading="lazy"><button data-image="2" aria-label="Expand third property image"></button></div>
+    </div>
+
+    <div class="content">
+      <div class="main-column">
+        <section class="section"><div class="eyebrow">At a glance</div><h2>Room to live your way.</h2><div class="spec-grid">${specMarkup}</div></section>
+        <section class="section"><div class="eyebrow">The property</div><h2>A closer look.</h2><p class="description">${escapeHtml(property.description)}</p><p class="description">This concept listing is designed to show how verified property information, a clear photo gallery and thoughtful presentation can help a prospective buyer or renter understand the home before arranging a viewing.</p></section>
+        <section class="section"><div class="eyebrow">The details</div><h2>Designed for everyday living.</h2><div class="feature-grid">${featureMarkup}</div></section>
+        <section class="section"><div class="eyebrow">Neighbourhood</div><h2>${escapeHtml(property.location)}.</h2><div class="location-card"><div class="location-mark">⌖</div><div><h3>A place in context.</h3><p>Location and neighbourhood information should be confirmed with the agency before publication. This demo does not show an exact property address.</p></div></div></section>
+      </div>
+
+      <aside class="sidebar">
+        <div class="enquiry-card">
+          <div class="eyebrow">Take the next step</div><h2>Make it personal.</h2><p>Ask a question or express interest in arranging a viewing.</p>
+          <form id="enquiryForm">
+            <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Full name" required></div>
+            <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+            <div class="field"><label for="phone">Phone (optional)</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Your contact number"></div>
+            <div class="field"><label for="interest">I'm interested in</label><select id="interest" name="interest"><option>Arranging a viewing</option><option>Getting more information</option><option>Checking availability</option></select></div>
+            <div class="field"><label for="message">Message (optional)</label><textarea id="message" name="message" placeholder="What would you like to know?"></textarea></div>
+            <button class="button full" type="submit">Prepare enquiry ↗</button>
+            <div class="form-message" id="formMessage" role="status"></div>
+          </form>
+          <p class="disclaimer">Portfolio demonstration only. This form does not send data to an agency. Listings, prices and features are fictional and illustrative.</p>
+          <div class="share-row"><button type="button" id="shareButton">Share property ↗</button><button type="button" id="saveButton">♡ Save</button></div>
+        </div>
+      </aside>
+    </div>
+  </div>`;
+
+  const related=Object.entries(properties).filter(([key])=>key!==id).slice(0,3);
+  document.getElementById("relatedGrid").innerHTML=related.map(([key,item])=>`
+    <a class="related-card" href="property.html?id=${encodeURIComponent(key)}">
+      <img src="${item.images[0]}" alt="${escapeHtml(item.name)}" loading="lazy">
+      <div class="related-info"><span>${escapeHtml(item.location)}</span><h3>${escapeHtml(item.name)}</h3><strong>${escapeHtml(item.price)}</strong></div>
+    </a>`).join("");
+  relatedSection.hidden=false;
+
+  let currentImage=0;
+  const lightbox=document.getElementById("lightbox");
+  const lightboxImage=document.getElementById("lightboxImage");
+  function showImage(index){
+    currentImage=(index+property.images.length)%property.images.length;
+    lightboxImage.src=property.images[currentImage];
+    lightboxImage.alt=property.name+" photograph "+(currentImage+1);
+  }
+  document.querySelectorAll("[data-image]").forEach(button=>button.addEventListener("click",()=>{
+    showImage(Number(button.dataset.image));
+    lightbox.classList.add("open");
+    document.getElementById("lightboxClose").focus();
+  }));
+  function closeLightbox(){lightbox.classList.remove("open")}
+  document.getElementById("lightboxClose").addEventListener("click",closeLightbox);
+  document.getElementById("lightboxPrev").addEventListener("click",()=>showImage(currentImage-1));
+  document.getElementById("lightboxNext").addEventListener("click",()=>showImage(currentImage+1));
+  lightbox.addEventListener("click",event=>{if(event.target===lightbox)closeLightbox()});
+  document.addEventListener("keydown",event=>{
+    if(!lightbox.classList.contains("open"))return;
+    if(event.key==="Escape")closeLightbox();
+    if(event.key==="ArrowRight")showImage(currentImage+1);
+    if(event.key==="ArrowLeft")showImage(currentImage-1);
+  });
+
+  document.getElementById("enquiryForm").addEventListener("submit",event=>{
+    event.preventDefault();
+    const form=event.currentTarget;
+    if(!form.reportValidity())return;
+    const message=document.getElementById("formMessage");
+    message.style.display="block";
+    message.textContent="Your demo enquiry is ready, but this portfolio form is not connected to an agency yet. No information has been sent or stored. We'll connect it when the real agency details are available.";
+  });
+
+  document.getElementById("shareButton").addEventListener("click",async()=>{
+    const shareData={title:property.name+" | AUREL ESTATES",text:"Explore "+property.name+" — a fictional Aurel Estates property concept.",url:location.href};
+    try{
+      if(navigator.share)await navigator.share(shareData);
+      else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(location.href);alert("Property link copied.");}
+      else alert("Copy this property link from your browser address bar.");
+    }catch(error){if(error.name!=="AbortError")alert("You can copy this link from your browser address bar.");}
+  });
+
+  const saveButton=document.getElementById("saveButton");
+  saveButton.addEventListener("click",()=>{
+    const active=saveButton.dataset.saved!=="true";
+    saveButton.dataset.saved=String(active);
+    saveButton.textContent=active?"♥ Saved":"♡ Save";
+    saveButton.style.background=active?"var(--green)":"transparent";
+    saveButton.style.color=active?"white":"var(--green)";
+  });
+}
+
+const menuToggle=document.getElementById("menuToggle");
+const nav=document.getElementById("nav");
+menuToggle.addEventListener("click",()=>{
+  const open=nav.classList.toggle("open");
+  menuToggle.textContent=open?"×":"☰";
+  menuToggle.setAttribute("aria-expanded",String(open));
+  menuToggle.setAttribute("aria-label",open?"Close navigation":"Open navigation");
+});
+nav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{
+  nav.classList.remove("open");
+  menuToggle.textContent="☰";
+  menuToggle.setAttribute("aria-expanded","false");
+}));
+</script>
+</body>
+</html>
