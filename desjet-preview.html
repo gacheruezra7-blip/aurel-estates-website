@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#182d2b">
+<title>Desjet Realtors — Property, Considered</title>
+<meta name="description" content="A concept preview exploring a refined, property-first digital experience for Desjet Realtors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#182d2b;--ink2:#234541;--cream:#f5f3ed;--white:#fffefa;
+  --muted:#767a70;--line:#e4e1d8;--accent:#d5ad83;--light:#eae7dc;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif}
+body.modal-open{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+button{cursor:pointer}
+img{display:block;width:100%;height:100%;object-fit:cover}
+[hidden]{display:none!important}
+.concept-bar{background:#e8d8c3;color:#483b2e;text-align:center;padding:9px 15px;font-size:10px;letter-spacing:.7px}
+.header{height:82px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;background:var(--cream);border-bottom:1px solid var(--line);position:relative;z-index:10}
+.brand{font:800 21px Manrope,sans-serif;letter-spacing:2px;white-space:nowrap}
+.brand span{font-weight:400;color:#b58b60}
+.brand small{display:block;font:9px "DM Sans",sans-serif;letter-spacing:3.5px;margin-top:3px}
+.nav{display:flex;align-items:center;gap:30px;font-size:12px}
+.nav a{transition:color .2s}
+.nav a:hover{color:#a1754d}
+.nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--ink);border:1px solid var(--ink);color:white;padding:14px 19px;font-size:12px;font-weight:600;transition:background .2s,transform .2s}
+.nav-cta:hover,.button:hover{background:var(--ink2);transform:translateY(-2px)}
+.button-light{background:transparent;color:var(--ink);border-color:#b9b9ad}
+.button-light:hover{background:var(--ink);color:white}
+.menu-toggle{display:none;border:0;background:transparent;color:var(--ink);font-size:26px}
+.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:2.2px;font-weight:700;color:#9a724c}
+h1,h2,h3,p{margin-top:0}
+.hero{padding:55px 7% 0}
+.hero-grid{display:grid;grid-template-columns:.87fr 1.13fr;gap:5%;align-items:center}
+.hero-copy{padding:20px 0 45px}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-size:10px;text-transform:uppercase;letter-spacing:1.6px;font-weight:700}
+.kicker:before{content:"";width:24px;height:1px;background:var(--accent)}
+.hero h1{font:500 clamp(48px,6.5vw,83px)/1.04 "Playfair Display",serif;letter-spacing:-1.5px;margin:24px 0}
+.hero h1 em{font-weight:400;color:#a87950}
+.hero-copy>p{font-size:13px;line-height:2;color:#62675e;max-width:400px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-note{font-size:10px;color:var(--muted);margin-top:25px;line-height:1.8}
+.hero-image{height:520px;position:relative;overflow:hidden;background:#ddd}
+.hero-image img{transition:transform .8s}
+.hero-image:hover img{transform:scale(1.025)}
+.image-label{position:absolute;bottom:17px;left:17px;background:#fffef0ed;padding:12px 15px;font-size:10px;letter-spacing:.5px}
+.image-index{position:absolute;right:17px;top:17px;background:var(--ink);color:white;font-size:10px;padding:9px 11px;letter-spacing:1px}
+.search-panel{position:relative;z-index:2;background:var(--white);border:1px solid var(--line);padding:21px;margin-top:-27px;box-shadow:0 10px 35px #182d2b0c}
+.search-top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:14px}
+.search-top strong{font:20px "Playfair Display",serif;font-weight:500}
+.search-top span{font-size:10px;color:var(--muted)}
+.search-fields{display:grid;grid-template-columns:1.5fr 1fr 1fr auto;gap:12px;align-items:end}
+.field label{display:block;font-size:10px;color:#696e64;font-weight:600;margin-bottom:8px}
+.field input,.field select,.field textarea{width:100%;min-width:0;background:white;border:1px solid #dcdacf;border-radius:0;padding:13px;font-size:11px;color:var(--ink)}
+.field input,.field select{height:45px}
+.field textarea{min-height:120px;resize:vertical;line-height:1.8}
+.search-fields .button{min-height:45px;white-space:nowrap}
+.section{padding:90px 7%}
+.section-heading{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:30px}
+.section-heading h2{font:500 clamp(33px,4.5vw,55px)/1.15 "Playfair Display",serif;margin:13px 0 0;letter-spacing:-.5px}
+.section-heading>p{max-width:330px;font-size:12px;line-height:1.9;color:var(--muted);margin-bottom:3px}
+.category-row{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:23px}
+.category{border:1px solid #d9d6cc;background:transparent;padding:10px 16px;color:var(--ink);font-size:11px;transition:all .2s}
+.category:hover,.category.active{background:var(--ink);color:white;border-color:var(--ink)}
+.results{font-size:11px;color:var(--muted);margin-bottom:18px}
+.property-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.property-card{min-width:0;background:var(--white);border:1px solid var(--line);transition:transform .25s,box-shadow .25s}
+.property-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px #182d2b0d}
+.card-image{height:244px;position:relative;overflow:hidden;background:#e1ded5}
+.card-image img{transition:transform .5s}
+.property-card:hover .card-image img{transform:scale(1.045)}
+.card-tag{position:absolute;top:14px;left:14px;background:var(--white);font-size:9px;letter-spacing:.7px;text-transform:uppercase;padding:9px 11px}
+.save-button{position:absolute;top:12px;right:12px;border:0;border-radius:50%;width:35px;height:35px;background:#fffef2ee;color:var(--ink);font-size:19px}
+.save-button.saved{background:var(--ink);color:white}
+.card-content{padding:19px}
+.card-location{font-size:9px;color:var(--muted);letter-spacing:1.1px;text-transform:uppercase;margin-bottom:9px}
+.card-content h3{font:24px "Playfair Display",serif;font-weight:400;margin:0 0 11px}
+.card-price{font-size:13px;font-weight:700;margin-bottom:15px}
+.card-specs{display:flex;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:10px}
+.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.card-bottom span{font-size:9px;color:var(--muted)}
+.details-button{padding:9px 0;border:0;border-bottom:1px solid var(--accent);background:transparent;font-size:11px;color:var(--ink)}
+.details-button:hover{color:#946744}
+.no-results{padding:50px 20px;background:var(--white);border:1px solid var(--line);text-align:center}
+.no-results h3{font:27px "Playfair Display",serif}
+.no-results p{font-size:12px;color:var(--muted);line-height:1.8}
+.text-link{font-size:11px;display:inline-flex;align-items:center;gap:12px;border-bottom:1px solid var(--accent);padding-bottom:8px}
+.story{background:var(--ink);color:white;display:grid;grid-template-columns:1fr 1fr;gap:8%;align-items:center}
+.story-image{height:500px;position:relative}
+.story-image img{object-fit:cover}
+.story-copy{padding:25px 0}
+.story-copy .eyebrow{color:#d4b28d}
+.story-copy h2{font:500 clamp(37px,4.7vw,59px)/1.12 "Playfair Display",serif;margin:19px 0}
+.story-copy p{font-size:12px;line-height:2;color:#c7cec5;max-width:460px}
+.story-mark{font:italic 17px "Playfair Display",serif;color:#ddc6a7;margin:29px 0}
+.story .button{background:var(--cream);border-color:var(--cream);color:var(--ink)}
+.story .button:hover{background:var(--accent);border-color:var(--accent)}
+.process-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:25px}
+.process-card{border-top:1px solid #bca88c;padding-top:20px}
+.process-card span{font-size:10px;letter-spacing:1.5px;color:#9a724c}
+.process-card h3{font:25px "Playfair Display",serif;margin:23px 0 10px}
+.process-card p{font-size:12px;line-height:1.9;color:var(--muted);margin-bottom:0}
+.contact-band{margin:0 7% 80px;background:#e9e4d8;padding:45px 5%;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.contact-band h2{font:clamp(30px,4vw,46px)/1.15 "Playfair Display",serif;margin:12px 0}
+.contact-band p{font-size:12px;line-height:1.9;color:#62675e;margin:0;max-width:400px}
+.footer{background:#101d1b;color:#eeeae1;padding:42px 7% 22px}
+.footer-top{display:flex;justify-content:space-between;align-items:start;gap:30px;flex-wrap:wrap;padding-bottom:30px}
+.footer-brand{font:800 20px Manrope,sans-serif;letter-spacing:2px}
+.footer-brand span{color:#d5ad83;font-weight:400}
+.footer-note{font-size:10px;line-height:1.9;color:#b5bdb5;max-width:350px;margin-top:14px}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap;font-size:11px;color:#e0e3dc}
+.footer-links a:hover{color:var(--accent)}
+.footer-bottom{border-top:1px solid #ffffff25;padding-top:17px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:9px;color:#b5bdb5}
+.modal{position:fixed;inset:0;z-index:30;background:#101d1beF;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal-box{background:var(--cream);max-width:810px;width:100%;max-height:90vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.modal-photo{min-height:350px;background:#ddd}
+.modal-copy{padding:32px}
+.modal-copy h2{font:31px "Playfair Display",serif;margin:12px 0}
+.modal-copy p{font-size:12px;line-height:1.9;color:#61665d}
+.modal-price{font-weight:700;margin:20px 0}
+.modal-close{position:absolute;right:12px;top:12px;width:38px;height:38px;border:0;background:white;font-size:23px;color:var(--ink);z-index:2}
+.modal-specs{font-size:10px;color:var(--muted);padding:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:20px}
+.form-modal{max-width:550px;width:100%;background:var(--cream);padding:30px;max-height:90vh;overflow:auto}
+.form-modal h2{font:33px "Playfair Display",serif;margin:12px 0}
+.form-modal>p{font-size:12px;color:var(--muted);line-height:1.8}
+.form-modal .field{margin-bottom:16px}
+.form-message{display:none;padding:14px;background:#e8e4d8;font-size:11px;line-height:1.8;margin-top:14px}
+@media(max-width:1050px){
+  .header{padding:0 5%}.hero{padding-left:5%;padding-right:5%}
+  .section{padding:75px 5%}.search-fields{grid-template-columns:1fr 1fr}
+  .search-fields .field:first-child{grid-column:1/-1}
+  .search-fields .button{align-self:end}
+  .property-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .story{gap:5%}.story-image{height:430px}
+}
+@media(max-width:700px){
+  .header{height:70px}
+  .menu-toggle{display:block}
+  .nav{display:none;position:absolute;top:69px;left:0;right:0;background:var(--cream);padding:25px 6%;flex-direction:column;align-items:stretch;gap:22px;border-bottom:1px solid var(--line)}
+  .nav.open{display:flex}
+  .nav-cta{align-self:flex-start}
+  .hero{padding-top:28px}
+  .hero-grid{grid-template-columns:1fr;gap:23px}
+  .hero-copy{padding:25px 0 15px}
+  .hero h1{font-size:clamp(49px,12vw,72px)}
+  .hero-image{height:380px}
+  .search-panel{margin-top:20px;padding:16px}
+  .search-top{align-items:start;flex-direction:column;gap:7px}
+  .section{padding:65px 5%}
+  .section-heading{align-items:start;flex-direction:column;gap:17px}
+  .property-grid{grid-template-columns:1fr}
+  .card-image{height:260px}
+  .story{grid-template-columns:1fr;gap:25px}
+  .story-image{height:320px;order:2}
+  .story-copy{order:1}
+  .process-grid{grid-template-columns:1fr;gap:28px}
+  .contact-band{margin:0 5% 60px;align-items:start;flex-direction:column}
+  .modal-box{grid-template-columns:1fr}
+  .modal-photo{min-height:230px;height:230px}
+  .modal-copy{padding:22px}
+}
+@media(max-width:430px){
+  .concept-bar{font-size:9px;line-height:1.6}
+  .hero-image{height:310px}
+  .search-fields{grid-template-columns:1fr}
+  .search-fields .field:first-child,.search-fields .button{grid-column:auto}
+  .card-image{height:235px}
+  .footer-links{gap:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<div class="concept-bar">A PRIVATE DESIGN CONCEPT FOR DISCUSSION · NOT AN OFFICIAL DESJET REALTORS WEBSITE</div>
+
+<header class="header">
+  <a class="brand" href="#home" aria-label="Desjet Realtors concept home">DESJET<span>.</span><small>R E A L T O R S</small></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  <nav class="nav" id="nav">
+    <a href="#home">Home</a>
+    <a href="#properties">Properties</a>
+    <a href="#approach">Our approach</a>
+    <a href="#contact">Contact</a>
+    <a class="nav-cta" href="#contact">Start a conversation ↗</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Find your next chapter</div>
+      <h1>Space to live.<br><em>Room to become.</em></h1>
+      <p>A more considered way to explore property. Discover homes, compare spaces and take the next step with clarity.</p>
+      <div class="actions">
+        <a class="button" href="#properties">Explore properties <span>↗</span></a>
+        <a class="button button-light" href="#approach">Why this experience</a>
+      </div>
+      <div class="hero-note">A concept for a clearer, more visual property journey.<br>Sample listings shown for design demonstration only.</div>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85" alt="Contemporary residence with considered architecture">
+      <span class="image-index">01 / THE COLLECTION</span>
+      <span class="image-label">Architecture · Light · Living</span>
+    </div>
+  </div>
+
+  <div class="search-panel" role="search">
+    <div class="search-top"><strong>Find a place that fits.</strong><span>Explore this sample collection</span></div>
+    <div class="search-fields">
+      <div class="field">
+        <label for="searchQuery">What are you looking for?</label>
+        <input id="searchQuery" type="search" placeholder="Try villa, garden, apartment…">
+      </div>
+      <div class="field">
+        <label for="searchLocation">Preferred location</label>
+        <select id="searchLocation">
+          <option value="">All locations</option>
+          <option value="Karen">Karen</option>
+          <option value="Lavington">Lavington</option>
+          <option value="Westlands">Westlands</option>
+          <option value="Kilimani">Kilimani</option>
+          <option value="Runda">Runda</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="searchType">Looking to</label>
+        <select id="searchType">
+          <option value="">Buy or rent</option>
+          <option value="Sale">Buy</option>
+          <option value="Rent">Rent</option>
+        </select>
+      </div>
+      <button class="button" id="searchButton" type="button">Find properties ↗</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="properties">
+  <div class="section-heading">
+    <div><div class="eyebrow">A visual property collection</div><h2>Places worth a closer look.</h2></div>
+    <p>A property should be easy to explore, understand and enquire about. This concept brings the important details into one clear experience.</p>
+  </div>
+
+  <div class="category-row" aria-label="Filter listings">
+    <button class="category active" data-filter="All">All properties</button>
+    <button class="category" data-filter="Sale">For sale</button>
+    <button class="category" data-filter="Rent">For rent</button>
+    <button class="category" data-filter="House">Houses & villas</button>
+    <button class="category" data-filter="Apartment">Apartments</button>
+  </div>
+
+  <div class="results" id="resultsCount" aria-live="polite">Showing 6 concept listings</div>
+
+  <div class="property-grid" id="propertyGrid">
+    <article class="property-card" data-id="ridge" data-location="Karen" data-type="House" data-status="Sale" data-search="ridge house karen garden villa modern family">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1100&q=85" alt="Modern villa with garden">
+        <span class="card-tag">Concept · For sale</span>
+        <button class="save-button" aria-label="Save Ridge House" aria-pressed="false">♡</button>
+      </div>
+      <div class="card-content">
+        <div class="card-location">Karen · Nairobi</div>
+        <h3>The Ridge House</h3>
+        <div class="card-price">KSh 68,000,000 <span style="font-size:9px;color:#777;font-weight:400">· sample</span></div>
+        <div class="card-specs"><span>4 bedrooms</span><span>3 bathrooms</span><span>Garden</span></div>
+        <div class="card-bottom"><span>HOUSE / VILLA</span><button class="details-button" data-open="ridge">Explore property ↗</button></div>
+      </div>
+    </article>
+
+    <article class="property-card" data-id="mara" data-location="Lavington" data-type="House" data-status="Sale" data-search="mara view lavington house contemporary terrace">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1100&q=85" alt="Contemporary home with broad windows">
+        <span class="card-tag">Concept · For sale</span>
+        <button class="save-button" aria-label="Save Mara View" aria-pressed="false">♡</button>
+      </div>
+      <div class="card-content">
+        <div class="card-location">Lavington · Nairobi</div>
+        <h3>Mara View Residence</h3>
+        <div class="card-price">KSh 43,500,000 <span style="font-size:9px;color:#777;font-weight:400">· sample</span></div>
+        <div class="card-specs"><span>3 bedrooms</span><span>3 bathrooms</span><span>Terrace</span></div>
+        <div class="card-bottom"><span>HOUSE / VILLA</span><button class="details-button" data-open="mara">Explore property ↗</button></div>
+      </div>
+    </article>
+
+    <article class="property-card" data-id="loft" data-location="Westlands" data-type="Apartment" data-status="Rent" data-search="urban loft westlands apartment city balcony">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1100&q=85" alt="Bright contemporary apartment interior">
+        <span class="card-tag">Concept · For rent</span>
+        <button class="save-button" aria-label="Save Urban Loft" aria-pressed="false">♡</button>
+      </div>
+      <div class="card-content">
+        <div class="card-location">Westlands · Nairobi</div>
+        <h3>The Urban Loft</h3>
+        <div class="card-price">KSh 165,000 / month <span style="font-size:9px;color:#777;font-weight:400">· sample</span></div>
+        <div class="card-specs"><span>2 bedrooms</span><span>2 bathrooms</span><span>Balcony</span></div>
+        <div class="card-bottom"><span>APARTMENT</span><button class="details-button" data-open="loft">Explore property ↗</button></div>
+      </div>
+    </article>
+
+    <article class="property-card" data-id="pearl" data-location="Kilimani" data-type="Apartment" data-status="Rent" data-search="pearl residence kilimani apartment spacious balcony">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=85" alt="Modern residence with an elegant exterior">
+        <span class="card-tag">Concept · For rent</span>
+        <button class="save-button" aria-label="Save Pearl Residence" aria-pressed="false">♡</button>
+      </div>
+      <div class="card-content">
+        <div class="card-location">Kilimani · Nairobi</div>
+        <h3>Pearl Residence</h3>
+        <div class="card-price">KSh 135,000 / month <span style="font-size:9px;color:#777;font-weight:400">· sample</span></div>
+        <div class="card-specs"><span>3 bedrooms</span><span>2 bathrooms</span><span>Balcony</span></div>
+        <div class="card-bottom"><span>APARTMENT</span><button class="details-button" data-open="pearl">Explore property ↗</button></div>
+      </div>
+    </article>
+
+    <article class="property-card" data-id="garden" data-location="Runda" data-type="House" data-status="Sale" data-search="garden villa runda house greenery family">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1100&q=85" alt="Contemporary house with natural materials">
+        <span class="card-tag">Concept · For sale</span>
+        <button class="save-button" aria-label="Save Garden Villa" aria-pressed="false">♡</button>
+      </div>
+      <div class="card-content">
+        <div class="card-location">Runda · Nairobi</div>
+        <h3>The Garden Villa</h3>
+        <div class="card-price">KSh 95,000,000 <span style="font-size:9px;color:#777;font-weight:400">· sample</span></div>
+        <div class="card-specs"><span>5 bedrooms</span><span>4 bathrooms</span><span>Garden</span></div>
+        <div class="card-bottom"><span>HOUSE / VILLA</span><button class="details-button" data-open="garden">Explore property ↗</button></div>
+      </div>
+    </article>
+
+    <article class="property-card" data-id="courtyard" data-location="Lavington" data-type="House" data-status="Sale" data-search="courtyard house lavington townhouse terrace">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=85" alt="Modern home with large windows">
+        <span class="card-tag">Concept · For sale</span>
+        <button class="save-button" aria-label="Save Courtyard House" aria-pressed="false">♡</button>
+      </div>
+      <div class="card-content">
+        <div class="card-location">Lavington · Nairobi</div>
+        <h3>The Courtyard House</h3>
+        <div class="card-price">KSh 57,000,000 <span style="font-size:9px;color:#777;font-weight:400">· sample</span></div>
+        <div class="card-specs"><span>4 bedrooms</span><span>4 bathrooms</span><span>Terrace</span></div>
+        <div class="card-bottom"><span>HOUSE / VILLA</span><button class="details-button" data-open="courtyard">Explore property ↗</button></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="no-results" id="noResults" hidden>
+    <h3>No matching properties</h3>
+    <p>Try another search or clear the filters to see the full sample collection.</p>
+    <button class="button" id="clearSearch" type="button">Clear filters ↺</button>
+  </div>
+  <p style="font-size:9px;line-height:1.8;color:var(--muted);margin-top:22px">All property names, photos, locations, prices and specifications on this preview are illustrative. They are not verified Desjet Realtors listings.</p>
+</section>
+
+<section class="section story" id="approach">
+  <div class="story-image">
+    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=85" alt="Carefully styled contemporary living space">
+  </div>
+  <div class="story-copy">
+    <div class="eyebrow">A clearer way to discover property</div>
+    <h2>Less searching around. More seeing what matters.</h2>
+    <p>This design concept puts property imagery, key details and a clear enquiry route together. Visitors can explore, narrow their options and open a closer property preview without losing their place.</p>
+    <p>For an approved agency version, the concept could be customised with verified listings, real imagery, brand colours and the agency's preferred enquiry channel.</p>
+    <div class="story-mark">A more considered property journey.</div>
+    <a class="button" href="#properties">Explore the collection ↗</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-heading">
+    <div><div class="eyebrow">Designed around the visitor</div><h2>From a first look to a clear next step.</h2></div>
+    <p>A property experience should feel simple, useful and intuitive on both desktop and mobile.</p>
+  </div>
+  <div class="process-grid">
+    <article class="process-card"><span>01 / DISCOVER</span><h3>Explore visually.</h3><p>Property photography and clear cards help visitors scan the collection quickly.</p></article>
+    <article class="process-card"><span>02 / NARROW DOWN</span><h3>Find a fit.</h3><p>Search by location, property type or whether the visitor is looking to buy or rent.</p></article>
+    <article class="process-card"><span>03 / CONNECT</span><h3>Make an enquiry.</h3><p>A clear next step makes it easier to ask about a property or request a conversation.</p></article>
+  </div>
+</section>
+
+<section class="contact-band" id="contact">
+  <div><div class="eyebrow">A concept worth exploring</div><h2>A better way to present property.</h2><p>This is an unofficial design concept prepared for discussion. It's a starting point for exploring a potential digital experience, not an existing Desjet service.</p></div>
+  <button class="button" id="openEnquiry" type="button">Discuss this concept ↗</button>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div><div class="footer-brand">DESJET<span>.</span></div><p class="footer-note">Independent website design concept.<br>Not an official or approved Desjet Realtors website.</p></div>
+    <div class="footer-links"><a href="#home">Home</a><a href="#properties">Properties</a><a href="#approach">Our approach</a><a href="#contact">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 · Unofficial design preview</span><span>Sample content only · Not affiliated or endorsed</span></div>
+</footer>
+
+<div class="modal" id="propertyModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button class="modal-close" type="button" data-close="propertyModal" aria-label="Close property details">×</button>
+    <div class="modal-photo"><img id="modalImage" src="" alt=""></div>
+    <div class="modal-copy">
+      <div class="eyebrow" id="modalLocation"></div>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <div class="modal-price" id="modalPrice"></div>
+      <div class="modal-specs" id="modalSpecs"></div>
+      <p style="font-size:10px;color:var(--muted)">Concept preview. Listing information is illustrative, not verified.</p>
+      <button class="button" id="modalEnquire" type="button">Discuss this example ↗</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="enquiryModal" role="dialog" aria-modal="true" aria-labelledby="enquiryTitle">
+  <div class="form-modal">
+    <button class="modal-close" type="button" data-close="enquiryModal" aria-label="Close enquiry form">×</button>
+    <div class="eyebrow">Concept discussion</div>
+    <h2 id="enquiryTitle">Let's start a conversation.</h2>
+    <p>This form is a demonstration. It does not send messages or collect data. Real contact details can be added only after the concept is approved.</p>
+    <form id="enquiryForm">
+      <div class="field"><label for="visitorName">Your name</label><input id="visitorName" name="visitorName" autocomplete="name" placeholder="Your name" required></div>
+      <div class="field"><label for="visitorEmail">Email address</label><input id="visitorEmail" name="visitorEmail" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+      <div class="field"><label for="visitorMessage">Message</label><textarea id="visitorMessage" name="visitorMessage" placeholder="What would you like to discuss?" required></textarea></div>
+      <button class="button" type="submit">Preview enquiry ↗</button>
+      <div class="form-message" id="formMessage" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+const propertyData={
+  ridge:{name:"The Ridge House",location:"Karen · Nairobi",price:"KSh 68,000,000 · sample",image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85",description:"A contemporary family-home concept with generous glazing, a landscaped garden and open shared living spaces.",specs:"4 bedrooms · 3 bathrooms · House / villa"},
+  mara:{name:"Mara View Residence",location:"Lavington · Nairobi",price:"KSh 43,500,000 · sample",image:"https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=85",description:"A considered residence concept with broad windows, a calm material palette and an indoor-outdoor feeling.",specs:"3 bedrooms · 3 bathrooms · House / villa"},
+  loft:{name:"The Urban Loft",location:"Westlands · Nairobi",price:"KSh 165,000 / month · sample",image:"https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=85",description:"A modern apartment concept with an open living area, plenty of natural light and a practical city layout.",specs:"2 bedrooms · 2 bathrooms · Apartment"},
+  pearl:{name:"Pearl Residence",location:"Kilimani · Nairobi",price:"KSh 135,000 / month · sample",image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85",description:"A welcoming apartment concept imagined around clear room layouts, broad windows and a private balcony.",specs:"3 bedrooms · 2 bathrooms · Apartment"},
+  garden:{name:"The Garden Villa",location:"Runda · Nairobi",price:"KSh 95,000,000 · sample",image:"https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=85",description:"A spacious villa concept with contemporary architecture, greenery and generous entertaining spaces.",specs:"5 bedrooms · 4 bathrooms · House / villa"},
+  courtyard:{name:"The Courtyard House",location:"Lavington · Nairobi",price:"KSh 57,000,000 · sample",image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85",description:"A townhouse concept with a private terrace, a modern layout and room for everyday life.",specs:"4 bedrooms · 4 bathrooms · House / villa"}
+};
+const cards=[...document.querySelectorAll(".property-card")];
+const filterButtons=[...document.querySelectorAll("[data-filter]")];
+const searchQuery=document.getElementById("searchQuery");
+const searchLocation=document.getElementById("searchLocation");
+const searchType=document.getElementById("searchType");
+const resultsCount=document.getElementById("resultsCount");
+const noResults=document.getElementById("noResults");
+let activeFilter="All";
+
+function applyFilters(){
+  const q=searchQuery.value.trim().toLowerCase();
+  const loc=searchLocation.value;
+  const status=searchType.value;
+  let visibleCount=0;
+  cards.forEach(card=>{
+    const matchQuery=!q||(card.dataset.search+" "+card.dataset.location+" "+card.dataset.type).toLowerCase().includes(q);
+    const matchLocation=!loc||card.dataset.location===loc;
+    const matchStatus=!status||card.dataset.status===status;
+    const matchFilter=activeFilter==="All"||card.dataset.status===activeFilter||card.dataset.type===activeFilter;
+    const visible=matchQuery&&matchLocation&&matchStatus&&matchFilter;
+    card.hidden=!visible;
+    if(visible)visibleCount++;
+  });
+  resultsCount.textContent="Showing "+visibleCount+" of "+cards.length+" concept listings";
+  noResults.hidden=visibleCount!==0;
+}
+[searchQuery,searchLocation,searchType].forEach(el=>{
+  el.addEventListener(el===searchQuery?"input":"change",applyFilters);
+});
+filterButtons.forEach(button=>button.addEventListener("click",()=>{
+  activeFilter=button.dataset.filter;
+  filterButtons.forEach(b=>b.classList.toggle("active",b===button));
+  if(activeFilter==="Sale")searchType.value="Sale";
+  else if(activeFilter==="Rent")searchType.value="Rent";
+  else searchType.value="";
+  applyFilters();
+}));
+document.getElementById("searchButton").addEventListener("click",()=>{
+  activeFilter="All";
+  filterButtons.forEach(b=>b.classList.toggle("active",b.dataset.filter==="All"));
+  applyFilters();
+  document.getElementById("properties").scrollIntoView({behavior:"smooth"});
+});
+function clearFilters(){
+  searchQuery.value="";
+  searchLocation.value="";
+  searchType.value="";
+  activeFilter="All";
+  filterButtons.forEach(b=>b.classList.toggle("active",b.dataset.filter==="All"));
+  applyFilters();
+}
+document.getElementById("clearSearch").addEventListener("click",clearFilters);
+
+document.querySelectorAll(".save-button").forEach(button=>button.addEventListener("click",()=>{
+  const saved=button.getAttribute("aria-pressed")!=="true";
+  button.setAttribute("aria-pressed",String(saved));
+  button.classList.toggle("saved",saved);
+  button.textContent=saved?"♥":"♡";
+}));
+
+const propertyModal=document.getElementById("propertyModal");
+const enquiryModal=document.getElementById("enquiryModal");
+let lastFocus=null;
+function openModal(modal){
+  lastFocus=document.activeElement;
+  modal.classList.add("open");
+  document.body.classList.add("modal-open");
+  modal.querySelector(".modal-close").focus();
+}
+function closeModal(modal){
+  modal.classList.remove("open");
+  if(!document.querySelector(".modal.open"))document.body.classList.remove("modal-open");
+  if(lastFocus)lastFocus.focus();
+}
+document.querySelectorAll("[data-close]").forEach(btn=>btn.addEventListener("click",()=>closeModal(document.getElementById(btn.dataset.close))));
+[propertyModal,enquiryModal].forEach(modal=>modal.addEventListener("click",e=>{if(e.target===modal)closeModal(modal)}));
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".modal.open").forEach(closeModal)});
+
+document.querySelectorAll("[data-open]").forEach(button=>button.addEventListener("click",()=>{
+  const item=propertyData[button.dataset.open];
+  if(!item)return;
+  document.getElementById("modalImage").src=item.image;
+  document.getElementById("modalImage").alt=item.name+" concept image";
+  document.getElementById("modalLocation").textContent=item.location;
+  document.getElementById("modalTitle").textContent=item.name;
+  document.getElementById("modalDescription").textContent=item.description;
+  document.getElementById("modalPrice").textContent=item.price;
+  document.getElementById("modalSpecs").textContent=item.specs;
+  openModal(propertyModal);
+}));
+document.getElementById("modalEnquire").addEventListener("click",()=>{
+  closeModal(propertyModal);
+  openModal(enquiryModal);
+});
+document.getElementById("openEnquiry").addEventListener("click",()=>openModal(enquiryModal));
+document.getElementById("enquiryForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  if(!e.currentTarget.reportValidity())return;
+  const message=document.getElementById("formMessage");
+  message.style.display="block";
+  message.textContent="Demo only: no message was sent and no personal details were stored. This preview is not connected to Desjet Realtors.";
+});
+
+const toggle=document.getElementById("menuToggle");
+const nav=document.getElementById("nav");
+toggle.addEventListener("click",()=>{
+  const isOpen=nav.classList.toggle("open");
+  toggle.textContent=isOpen?"×":"☰";
+  toggle.setAttribute("aria-expanded",String(isOpen));
+  toggle.setAttribute("aria-label",isOpen?"Close navigation":"Open navigation");
+});
+nav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{
+  nav.classList.remove("open");
+  toggle.textContent="☰";
+  toggle.setAttribute("aria-expanded","false");
+}));
+applyFilters();
+</script>
+</body>
+</html>
